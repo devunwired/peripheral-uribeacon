@@ -1,1 +1,1 @@
-include ':app', ':uribeacon-library'
+include ':app'

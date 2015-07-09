@@ -19,7 +19,13 @@ android {
     }
 }
 
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile project(':uribeacon-library')
+    compile 'org.uribeacon:uribeacon-library-release@aar'
 }
