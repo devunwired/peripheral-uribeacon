@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -15,7 +16,6 @@ public class BeaconSetupActivity extends Activity implements
         View.OnClickListener {
     private static final String TAG =
             BeaconSetupActivity.class.getSimpleName();
-
 
     /* UI to control advertise value */
     private EditText mUrlText;
@@ -29,6 +29,12 @@ public class BeaconSetupActivity extends Activity implements
 
         findViewById(R.id.button_start).setOnClickListener(this);
         findViewById(R.id.button_stop).setOnClickListener(this);
+
+        final Uri uri = getIntent().getData();
+        if (uri != null) {
+            Log.d(TAG, "Received incoming Uri: " + uri.toString());
+            mUrlText.setText(uri.toString());
+        }
     }
 
     @Override

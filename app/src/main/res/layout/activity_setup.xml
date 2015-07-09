@@ -3,12 +3,14 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/activity_margin"
     android:gravity="center">
 
     <EditText
         android:id="@+id/text_url"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_margin"
         android:hint="Enter the URL to broadcast"
         android:inputType="textUri"/>
     <Button

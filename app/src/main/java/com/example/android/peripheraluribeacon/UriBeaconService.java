@@ -39,8 +39,6 @@ public class UriBeaconService extends Service {
                 (BluetoothManager) getSystemService(BLUETOOTH_SERVICE);
         BluetoothAdapter bluetoothAdapter = manager.getAdapter();
         mBluetoothLeAdvertiser = bluetoothAdapter.getBluetoothLeAdvertiser();
-
-        startForeground(NOTIFICATION_ID, buildForegroundNotification());
     }
 
     @Override
@@ -51,6 +49,7 @@ public class UriBeaconService extends Service {
             stopSelf();
         } else {
             restartAdvertising(uri);
+            startForeground(NOTIFICATION_ID, buildForegroundNotification(uri));
         }
 
         return START_STICKY;
@@ -105,15 +104,16 @@ public class UriBeaconService extends Service {
         startAdvertising(uri);
     }
 
-    private Notification buildForegroundNotification() {
+    private Notification buildForegroundNotification(Uri uri) {
         Intent notificationIntent = new Intent(this, BeaconSetupActivity.class);
+        notificationIntent.setData(uri);
         PendingIntent trigger = PendingIntent
                 .getActivity(this, 0, notificationIntent, 0);
 
         return new Notification.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle("Broadcasting URL")
-                .setContentText("Broadcasting URL")
+                .setContentText("Broadcasting " + uri.toString())
                 .setContentIntent(trigger)
                 .build();
     }
@@ -127,7 +127,7 @@ public class UriBeaconService extends Service {
         //Flags + Power + URI
         ByteBuffer buffer = ByteBuffer.allocateDirect(1 + 1 + uriBytes.length);
         buffer.put(model.getFlags());
-        buffer.put(model.getTxPowerLevel());
+        buffer.put(model.getTxPowerLevel()); // This is cheating…we don't really know it
         buffer.put(uriBytes);
 
         return byteBufferToArray(buffer);
