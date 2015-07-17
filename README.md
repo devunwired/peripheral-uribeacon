@@ -7,7 +7,7 @@ This repository contains an example of using the Android BLE Advertising APIs (2
 
 ##Disclaimer##
 
-This repository contains sample code intended to demonstrate the capabilities of the RecyclerView layout manager APIs. It is not intended to be used as-is in applications as a library dependency, and will not be maintained as such. Bug fix contributions are welcome, but issues and feature requests will not be addressed.
+This repository contains sample code intended to demonstrate the capabilities of the Android Bluetooth LE APIs. It is not intended to be used as-is in applications as a library dependency, and will not be maintained as such. Bug fix contributions are welcome, but issues and feature requests will not be addressed.
 
 ##License##
 
