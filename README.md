@@ -5,6 +5,10 @@ This repository contains an example of using the Android BLE Advertising APIs (2
 - https://github.com/google/physical-web
 - https://github.com/google/eddystone
 
+##Disclaimer##
+
+This repository contains sample code intended to demonstrate the capabilities of the RecyclerView layout manager APIs. It is not intended to be used as-is in applications as a library dependency, and will not be maintained as such. Bug fix contributions are welcome, but issues and feature requests will not be addressed.
+
 ##License##
 
 **The code supplied here is covered under the MIT Open Source License:**
