@@ -20,14 +20,15 @@ import org.uribeacon.beacon.UriBeacon;
 import java.net.URISyntaxException;
 import java.nio.ByteBuffer;
 
-public class UriBeaconService extends Service {
-    private static final String TAG = UriBeaconService.class.getSimpleName();
+public class EddystoneUrlService extends Service {
+    private static final String TAG = EddystoneUrlService.class.getSimpleName();
 
     private static final int NOTIFICATION_ID = 42;
 
-    /* Full Bluetooth UUID that defines the URI Service */
-    public static final ParcelUuid URI_SERVICE =
-            ParcelUuid.fromString("0000fed8-0000-1000-8000-00805f9b34fb");
+    /* Full Bluetooth UUID that defines the Eddystone Service */
+    public static final ParcelUuid EDDY_SERVICE =
+            ParcelUuid.fromString("0000feaa-0000-1000-8000-00805f9b34fb");
+    public static final byte TYPE_URL = 0x10;
 
     private BluetoothLeAdvertiser mBluetoothLeAdvertiser;
 
@@ -82,8 +83,8 @@ public class UriBeaconService extends Service {
             AdvertiseData data = new AdvertiseData.Builder()
                     .setIncludeDeviceName(false)
                     .setIncludeTxPowerLevel(false)
-                    .addServiceUuid(URI_SERVICE)
-                    .addServiceData(URI_SERVICE, buildDataPacket(uri))
+                    .addServiceUuid(EDDY_SERVICE)
+                    .addServiceData(EDDY_SERVICE, buildDataPacket(uri))
                     .build();
 
             mBluetoothLeAdvertiser
@@ -126,7 +127,7 @@ public class UriBeaconService extends Service {
         byte[] uriBytes = model.getUriBytes();
         //Flags + Power + URI
         ByteBuffer buffer = ByteBuffer.allocateDirect(1 + 1 + uriBytes.length);
-        buffer.put(model.getFlags());
+        buffer.put(TYPE_URL);
         buffer.put(model.getTxPowerLevel()); // This is cheating…we don't really know it
         buffer.put(uriBytes);
 

@@ -45,7 +45,7 @@ public class BeaconSetupActivity extends Activity implements
 
     @Override
     public void onClick(View v) {
-        Intent serviceIntent = new Intent(this, UriBeaconService.class);
+        Intent serviceIntent = new Intent(this, EddystoneUrlService.class);
         switch (v.getId()) {
             case R.id.button_start:
                 Uri uri = Uri.parse(mUrlText.getText().toString());

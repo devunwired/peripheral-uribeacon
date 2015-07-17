@@ -18,7 +18,7 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".UriBeaconService"
+        <service android:name=".EddystoneUrlService"
             android:exported="false" />
     </application>
 

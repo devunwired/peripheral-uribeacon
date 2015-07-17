@@ -1,10 +1,9 @@
-#UriBeacon Broadcaster#
-
-This repository contains an example of using the Android BLE Advertising APIs (21+) to emulate a Physical Web UriBeacon. You can find more information about UriBeacon and the Physical Web from the following:
+#Eddystone Broadcaster#
+This repository contains an example of using the Android BLE Advertising APIs (21+) to emulate a Physical Web Eddystone-URL. You can find more information about Eddystone and the Physical Web from the following:
 
 - http://google.github.io/physical-web/
 - https://github.com/google/physical-web
-- https://github.com/google/uribeacon
+- https://github.com/google/eddystone
 
 ##License##
 
