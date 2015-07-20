@@ -17,6 +17,9 @@ public class BeaconSetupActivity extends Activity implements
     private static final String TAG =
             BeaconSetupActivity.class.getSimpleName();
 
+    //Refers to newcircle.com/android
+    private static final String DEFAULT_URL = "http://goo.gl/BhqDJb";
+
     /* UI to control advertise value */
     private EditText mUrlText;
 
@@ -34,6 +37,8 @@ public class BeaconSetupActivity extends Activity implements
         if (uri != null) {
             Log.d(TAG, "Received incoming Uri: " + uri.toString());
             mUrlText.setText(uri.toString());
+        } else {
+            mUrlText.setText(DEFAULT_URL);
         }
     }
 
